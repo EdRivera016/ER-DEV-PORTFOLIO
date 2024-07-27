@@ -1,15 +1,15 @@
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 //variants
 const stairAnimation = {
   initial: {
-    top: 0,
+    top: "0%",
   },
   animate: {
-    top: 1,
+    top: "100%",
   },
   exit: {
-    top: 0,
+    top: ["100%", "0%"],
   },
 };
 
