@@ -7,36 +7,24 @@ import Stairs from "./Stairs";
 const StairTransition = () => {
   const pathname = usePathname();
   return (
-  <>
-  <AnimatePresence mode="wait">
-    <div key={pathname}>
-      <div className="h-screen w-screen fixed top-0 left-0 right-0 pointer-events-none z-40 flex">
-        <Stairs />
-        </div>
-    </div>
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="h-screen w-screen fixed top-0 left-0 right-0 pointer-events-none z-40 flex"
+        >
+          <Stairs />
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 };
 
-export default StairTransition
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default StairTransition;
 
 
 // "use client";
