@@ -7,38 +7,38 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaBootstrap,
+  FaDatabase,
+  FaNetworkWired,
 } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiExpress,
+  SiMongodb,
+  SiGraphql,
+} from "react-icons/si";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { motion } from "framer-motion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const about = {
   title: "About me",
-  description:
-    "Jr Full Stack Engineer looking to grow in the industry with the latest languages and technologies.",
+  description: "Jr Full Stack Engineer looking to grow in the industry with the latest languages and technologies.",
   info: [
-    {
-      fieldName: "Name",
-      fieldValue: "Edwin Rivera",
-    },
-    {
-      fieldName: "Phone",
-      fieldValue: "(813)-454-4235",
-    },
-    {
-      fieldName: "Experience",
-      fieldValue: "6+ Months",
-    },
-    {
-      fieldName: "Nationality",
-      fieldValue: "Puerto Rican",
-    },
-    {
-      fieldName: "Email",
-      fieldValue: "edwinrivera016@outlook.com",
-    },
-    {
-      fieldName: "Languages",
-      fieldValue: "English, Spanish",
-    },
+    { fieldName: "Name", fieldValue: "Edwin Rivera" },
+    { fieldName: "Phone", fieldValue: "(813)-454-4235" },
+    { fieldName: "Experience", fieldValue: "6+ Months" },
+    { fieldName: "Nationality", fieldValue: "Puerto Rican" },
+    { fieldName: "Email", fieldValue: "edwinrivera016@outlook.com" },
+    { fieldName: "Languages", fieldValue: "English, Spanish" },
   ],
 };
 
@@ -46,11 +46,7 @@ const education = {
   title: "Education",
   description: "UCF Coding Bootcamp",
   items: [
-    {
-      institution: "UCF",
-      degree: "Full Stack Web Developer Bootcamp",
-      duration: "2024",
-    },
+    { institution: "UCF", degree: "Full Stack Web Developer Bootcamp", duration: "2024" },
   ],
 };
 
@@ -69,9 +65,8 @@ const skills = {
         { icon: <SiNextdotjs />, name: "Next.js" },
         { icon: <SiTailwindcss />, name: "Tailwind CSS" },
         { icon: <FaFigma />, name: "Figma" },
-        { icon: <FaNodeJs />, name: "Bootstrap" },
-        { icon: <FaNodeJs />, name: "Responsive Design" },
-        { icon: <FaNodeJs />, name: "jQuery" },
+        { icon: <FaBootstrap />, name: "Bootstrap" },
+        { icon: <FaNetworkWired />, name: "Responsive Design" },
       ],
     },
     backend: {
@@ -79,48 +74,37 @@ const skills = {
       description: "Technologies for backend development",
       skillList: [
         { icon: <FaNodeJs />, name: "Node.js" },
-        { icon: <FaNodeJs />, name: "Express.js" },
-        { icon: <FaNodeJs />, name: "MySQL with Sequelize" },
-        { icon: <FaNodeJs />, name: "MongoDB with Mongoose" },
+        { icon: <SiExpress />, name: "Express.js" },
+        { icon: <FaDatabase />, name: "MySQL with Sequelize" },
+        { icon: <SiMongodb />, name: "MongoDB with Mongoose" },
       ],
     },
     middleware: {
       title: "Middleware & APIs",
       description: "Middleware and API technologies",
       skillList: [
-        { icon: <FaNodeJs />, name: "REST API" },
-        { icon: <FaNodeJs />, name: "GraphQL" },
+        { icon: <FaNetworkWired />, name: "REST API" },
+        { icon: <SiGraphql />, name: "GraphQL" },
       ],
     },
   },
 };
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
-
 const Resume = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
-      }}
+      animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4, ease: "easeIn" } }}
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto">
-        <Tabs
-          defaultValue="experience"
-          className="flex flex-col xl:flex-row gap-[60px]"
-        >
+        <Tabs defaultValue="education" className="flex flex-col xl:flex-row gap-[60px]">
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
             <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger> {/* Fixed typo here */}
+            <TabsTrigger value="skills">Skills</TabsTrigger>
           </TabsList>
 
           <div className="min-h-[70vh] w-full">
-            {/* education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
@@ -139,7 +123,6 @@ const Resume = () => {
                           {item.degree}
                         </h3>
                         <div className="flex items-center gap-3">
-                          {/* dot */}
                           <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                           <p className="text-white/60">{item.institution}</p>
                         </div>
@@ -149,7 +132,7 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
-            {/* skills */}
+
             <TabsContent value="skills" className="w-full h-full">
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
@@ -162,13 +145,24 @@ const Resume = () => {
                   <div key={catIndex} className="category">
                     <h4 className="text-3xl font-semibold">{category.title}</h4>
                     <p className="text-white/60">{category.description}</p>
-                    <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
+                    <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
                       {category.skillList.map((skill, skillIndex) => (
                         <li
                           key={skillIndex}
                           className="flex items-center gap-2"
                         >
-                          {skill.icon} {skill.name}
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                  {skill.icon}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className="capitalize">{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </li>
                       ))}
                     </ul>
