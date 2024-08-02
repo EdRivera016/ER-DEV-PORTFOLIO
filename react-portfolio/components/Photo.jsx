@@ -12,6 +12,7 @@ const Photo = () => {
           opacity: 1,
           transition: { delay: 2, duration: 0.4, ease: "easeIn" },
         }}
+        className="relative"
       >
         {/* image */}
         <motion.div
@@ -20,7 +21,7 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[298px] h-[298px] xl:w-[458px] xl:h-[438px] mix-blend-lighten absolute rounded-full overflow-hidden"
+          className="w-[328px] h-[328px] xl:w-[438px] xl:h-[468px] mix-blend-lighten rounded-full overflow-hidden"
         >
           <Image
             src="/assets/IMAGE.png"
@@ -28,39 +29,9 @@ const Photo = () => {
             quality={100}
             fill
             alt=""
-            className="object-contain"
+            className="object-cover"
           />
         </motion.div>
-
-        {/* circle */}
-        <motion.svg
-          className="w-[300px] xl:w-[500px] h-[300px] xl:h-[490px]"
-          fill="transparent"
-          viewBox="0 0 506 506"
-          xmlnx="http://www.w3.org/2000/svg"
-        >
-          <motion.polygon
-            points="153,13 353,13 493,153 493,353 353,493 153,493 13,353 13,153"
-
-            // cx="263"
-            // cy="263"
-            // r="260"
-            stroke="#0ea5e9"
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ strokeDasharray: "24 10 0 0" }}
-            animate={{
-              strokeDasharray: ["15 120 25 25", "16 25 92 72", " 4 250 22 22"],
-              rotate: [120, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        </motion.svg>
       </motion.div>
     </div>
   );
