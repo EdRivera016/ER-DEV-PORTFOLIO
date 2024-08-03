@@ -1,6 +1,6 @@
 [build]
   base = "react-portfolio"
-  publish = ".next"
+  publish = "react-portfolio/.next"
   command = "npm run build"
 
 [functions]
