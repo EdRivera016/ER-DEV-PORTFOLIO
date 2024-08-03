@@ -1,7 +1,7 @@
 [build]
   base = "react-portfolio"
-  publish = "react-portfolio/.next"
+  publish = ".next"
   command = "npm run build"
 
 [functions]
-  directory = "react-portfolio/netlify/functions"
+  directory = "netlify/functions"
